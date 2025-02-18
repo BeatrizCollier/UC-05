@@ -16,7 +16,7 @@ app.get('/produtos', (requisicao, resposta) => {
   //tratamento de exceções
   try {
     if(bancoDados.length === 0){
-      return resposta.status(200).json({mensagem:"Banco de dados vazio"})
+      return resposta.status(200).json({mensagem:"Banco de dados vazio!"})
     }
     resposta.status(200).json(bancoDados);
   } catch (error) {
@@ -85,6 +85,15 @@ app.delete("/produtos/:id", (requisicao, resposta) =>{
   resposta.status(200).json({msg:"Produto deletado com sucesso!"});
   } catch (error) {
     resposta.status(500).json({msg:"Erro ao deletar produto.", erro: error.message})
+  }
+})
+
+app.delete("/produtos", (requisicao, resposta) =>{
+  try {
+    bancoDados.length = 0
+    resposta.status(200).json({msg:"Todos os produtos foram deletados com sucesso!"});
+  } catch (error) {
+    resposta.status(500).json({msg:"Erro ao deletar todos os produtos.", erro: error.message})
   }
 })
 
