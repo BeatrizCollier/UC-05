@@ -68,7 +68,7 @@ class AlunoController{
         try {
             const matricula = requisicao.params.matricula;
             const aluno = await AlunoModel.listarPorMatricula(matricula);
-            if (!aluno) {
+            if (aluno.length === 0) {
             return resposta.status(404).json({msg: "Aluno não encontrado!"})
             }
             await AlunoModel.excluirPorMatricula(matricula)

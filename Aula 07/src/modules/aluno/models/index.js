@@ -23,19 +23,19 @@ class AlunoModel{
     }
     static async listarPorMatricula(matricula){
         const dados = [matricula];
-        const consulta = `select * from aluno where id = $1`;
+        const consulta = `select * from aluno where matricula = $1`;
         const aluno = await pool.query(consulta, dados);
         return aluno.rows;
     }
     static async excluirPorMatricula(matricula){
         const dados = [matricula];
-        const consulta = `delete from produto where id = $1`;
+        const consulta = `delete from aluno where matricula = $1`;
         await pool.query(consulta, dados);
 
     }
     static async excluirTodos(){
-        const consulta = `delete from produto`;
-        await pool.query(consulta, dados);
+        const consulta = `delete from aluno`;
+        await pool.query(consulta);
     }
 }
 
