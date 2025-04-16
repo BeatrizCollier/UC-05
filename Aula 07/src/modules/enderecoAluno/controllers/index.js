@@ -23,7 +23,7 @@ class EnderecoController{
             }
             const endereco = await EnderecoModel.editarEndereco(matricula, cep, numero, ponto_de_referencia);
             if (endereco.length === 0) {
-                return  resposta.status(400).json({msg: "Endereço não encontrado!"});
+                return resposta.status(400).json({msg: "Endereço não encontrado!"});
             }
             resposta.status(200).json({mensagem: "Endereço editado com sucesso!", endereco: endereco});
             
